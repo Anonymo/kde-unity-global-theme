@@ -35,7 +35,7 @@ defaultFileSuffix=.png
 [kwinrc][org.kde.kdecoration2]
 library=org.kde.breeze
 theme=Breeze
-ButtonsOnLeft=XNM
+ButtonsOnLeft=XNMIA
 ButtonsOnRight=
 BorderlessMaximizedWindows=true
 
