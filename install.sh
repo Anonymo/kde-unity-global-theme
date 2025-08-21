@@ -10,14 +10,12 @@ echo "Installing Ubuntu Unity theme for KDE Plasma..."
 # Check if running as root for system-wide install
 if [ "$EUID" -eq 0 ]; then
     THEME_DIR="/usr/share/plasma/look-and-feel/org.kde.unity.desktop"
-    LATTE_DIR="/usr/share/latte/layouts"
     COLOR_DIR="/usr/share/color-schemes"
     AUTOSTART_DIR="/etc/xdg/autostart"
     BIN_DIR="/usr/local/bin"
     SYSTEM_INSTALL=true
 else
     THEME_DIR="$HOME/.local/share/plasma/look-and-feel/org.kde.unity.desktop"
-    LATTE_DIR="$HOME/.local/share/latte/layouts"
     COLOR_DIR="$HOME/.local/share/color-schemes"
     AUTOSTART_DIR="$HOME/.config/autostart"
     BIN_DIR="$HOME/.local/bin"
@@ -39,7 +37,6 @@ else
     AURORAE_DIR="$HOME/.local/share/aurorae/themes/Unity"
     GTK_CONFIG_DIR="$HOME/.local/share/kde-unity-global-theme/gtk"
 fi
-mkdir -p "$LATTE_DIR"
 mkdir -p "$COLOR_DIR"
 mkdir -p "$AUTOSTART_DIR"
 mkdir -p "$BIN_DIR"
@@ -69,11 +66,7 @@ cp gtk/settings.ini "$GTK_CONFIG_DIR/"
 cp gtk/gtk-4.0.ini "$GTK_CONFIG_DIR/"
 cp gtk/gtkrc-2.0 "$GTK_CONFIG_DIR/"
 
-# Install Latte Dock layout if Latte is installed
-if command -v latte-dock &>/dev/null; then
-    echo "Installing Latte Dock Unity layout..."
-    cp latte/Unity.layout.latte "$LATTE_DIR/"
-fi
+# Unity layout will be configured using KDE's native panels
 
 # Install first-run setup script
 cp scripts/setup-ubuntu-unity-theme.sh "$BIN_DIR/"

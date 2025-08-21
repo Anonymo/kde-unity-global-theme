@@ -43,24 +43,17 @@ $KWRITECONFIG --file kdeglobals --group "General" --key "cursorTheme" "Yaru"
 # Configure plasma theme
 $KWRITECONFIG --file plasmarc --group "Theme" --key "name" "Unity"
 
-# Configure panel height (24px Unity style)
-$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel" --group "Defaults" --key "thickness" "24"
+# Configure KDE panels for Unity-style layout
+echo "Configuring Unity-style panel layout..."
 
-# Configure Latte Dock with Unity layout (if installed and compatible)
-if command -v latte-dock &>/dev/null; then
-    echo "Configuring Latte Dock for Unity layout..."
-    $KWRITECONFIG --file lattedockrc --group "UniversalSettings" --key "currentLayout" "Unity"
-    $KWRITECONFIG --file lattedockrc --group "PlasmaThemeExtended" --key "backgroundOpacity" "64"
-    
-    # Try to start Latte Dock (may not work perfectly with Plasma 6)
-    killall latte-dock 2>/dev/null || true
-    sleep 1
-    latte-dock &>/dev/null &
-    echo "Note: Latte Dock may have compatibility issues with Plasma 6"
-else
-    echo "Latte Dock not installed - using default Plasma panel instead"
-    echo "For Unity-style dock, you can try: yay -S latte-dock (compatibility not guaranteed)"
-fi
+# Set top panel height to 24px (Unity standard)
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "thickness" "24"
+
+# Configure panel to show global menu, clock, and system tray (Unity style)
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "alignment" "132"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "panelVisibility" "0"
+
+# Panel will use Unity-style layout defined in the theme
 
 # Set KRunner shortcut to Alt+Space (Unity HUD style)
 $KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+Space\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner"

@@ -13,11 +13,6 @@ Transform your KDE desktop to look like Ubuntu Unity - complete with the iconic 
 yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers plasma-browser-integration plasma-integration
 ```
 
-   **Optional:** Install Latte Dock for Unity-style dock (may not work perfectly with Plasma 6):
-   ```bash
-   yay -S latte-dock
-   ```
-
 2. **Download and build the theme:**
 ```bash
 git clone https://github.com/Anonymo/kde-unity-global-theme.git
@@ -66,9 +61,9 @@ cd kde-unity-global-theme
 ## What You Get
 
 - **Unity-style top panel** with global menu
-- **Window buttons on the left** (like Ubuntu Unity)
+- **Window buttons on the left** (like Ubuntu Unity)  
 - **Orange accent colors** throughout the system
-- **Left-side dock** with Unity-style app indicators
+- **Unity-style panel layout** using KDE's native panels
 - **Ubuntu fonts** for authentic look
 - **Dark theme** with Unity colors
 
@@ -88,9 +83,9 @@ systemctl --user restart plasma-plasmashell.service
 sudo pacman -R kde-unity-global-theme  # If you used the package
 ```
 
-**Need the Unity dock?**
-- Install Latte Dock: `sudo pacman -S latte-dock` (Arch) or equivalent
-- The Unity layout will be applied automatically
+**Want to customize panels?**
+- Right-click on panels → **Configure Panel**
+- The theme configures Unity-style panels automatically
 
 ### Get Support
 - [Report issues on GitHub](https://github.com/Anonymo/kde-unity-global-theme/issues)

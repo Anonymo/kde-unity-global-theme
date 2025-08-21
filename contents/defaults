@@ -69,12 +69,11 @@ activate application launcher=Meta,Meta,Activate Application Launcher
 [kglobalshortcutsrc][krunner]
 _launch=Alt+Space,Alt+Space,KRunner
 
-[lattedockrc][UniversalSettings]
-currentLayout=Unity
-launchers=applications:systemsettings.desktop,applications:org.kde.dolphin.desktop,applications:firefox.desktop,applications:org.kde.kate.desktop
-
-[lattedockrc][PlasmaThemeExtended]
-backgroundOpacity=64
+[plasmashellrc][PlasmaViews][Panel 1]
+alignment=132
+floating=0
+panelVisibility=0
+thickness=24
 
 [kdeglobals][Colors:View]
 BackgroundAlternate=48,52,54

@@ -16,9 +16,6 @@ depends=(
     'plasma-browser-integration'
     'plasma-integration'
 )
-optdepends=(
-    'latte-dock: Unity-style dock (may have compatibility issues with Plasma 6)'
-)
 makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
@@ -44,8 +41,7 @@ package() {
     # Install color scheme
     install -Dm644 colors/UnityDark.colors "$pkgdir/usr/share/color-schemes/UnityDark.colors"
     
-    # Install Latte layout
-    install -Dm644 latte/Unity.layout.latte "$pkgdir/usr/share/latte/layouts/Unity.layout.latte"
+    # Unity layout configured through KDE native panels
     
     # Install GTK configuration
     install -dm755 "$pkgdir/usr/share/$pkgname/gtk"
