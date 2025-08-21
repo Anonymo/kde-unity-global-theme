@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=Ubuntu Unity look for KDE Plasma
+Name=Ubuntu Unity
+X-KDE-PluginInfo-Author=Anonymo
+X-KDE-PluginInfo-Category=Plasma Look And Feel
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-License=GPL-3.0
+X-KDE-PluginInfo-Name=org.ubuntu.unity
+X-KDE-PluginInfo-ServiceTypes=Plasma/LookAndFeel
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=https://github.com/Anonymo/kde-unity-global-theme
