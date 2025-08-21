@@ -1,0 +1,19 @@
+pkgbase = kde-unity-global-theme
+	pkgdesc = Ubuntu Unity look and feel for KDE Plasma 6
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Anonymo/kde-unity-global-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plasma-desktop>=6.0
+	depends = qt6-base>=6.4
+	optdepends = ttf-ubuntu-font-family: Ubuntu fonts for authentic Unity look
+	optdepends = yaru-icon-theme: Ubuntu Yaru icons
+	optdepends = yaru-gtk-theme: For GTK application theming
+	optdepends = latte-dock: For Unity-style dock
+	optdepends = plasma-browser-integration: For global menu in browsers
+	source = git+https://github.com/Anonymo/kde-unity-global-theme.git
+	sha256sums = SKIP
+
+pkgname = kde-unity-global-theme

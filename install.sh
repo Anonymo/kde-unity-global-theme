@@ -9,14 +9,16 @@ echo "Installing Ubuntu Unity theme for KDE Plasma..."
 
 # Check if running as root for system-wide install
 if [ "$EUID" -eq 0 ]; then
-    THEME_DIR="/usr/share/plasma/look-and-feel/org.ubuntu.unity"
-    LATTE_DIR="/usr/share/latte-dock/layouts/Unity"
+    THEME_DIR="/usr/share/plasma/look-and-feel/Unity"
+    LATTE_DIR="/usr/share/latte/layouts"
+    COLOR_DIR="/usr/share/color-schemes"
     AUTOSTART_DIR="/etc/xdg/autostart"
     BIN_DIR="/usr/local/bin"
     SYSTEM_INSTALL=true
 else
-    THEME_DIR="$HOME/.local/share/plasma/look-and-feel/org.ubuntu.unity"
-    LATTE_DIR="$HOME/.local/share/latte-dock/layouts/Unity"
+    THEME_DIR="$HOME/.local/share/plasma/look-and-feel/Unity"
+    LATTE_DIR="$HOME/.local/share/latte/layouts"
+    COLOR_DIR="$HOME/.local/share/color-schemes"
     AUTOSTART_DIR="$HOME/.config/autostart"
     BIN_DIR="$HOME/.local/bin"
     SYSTEM_INSTALL=false
@@ -25,6 +27,7 @@ fi
 # Create directories
 mkdir -p "$THEME_DIR/contents"
 mkdir -p "$LATTE_DIR"
+mkdir -p "$COLOR_DIR"
 mkdir -p "$AUTOSTART_DIR"
 mkdir -p "$BIN_DIR"
 
@@ -32,6 +35,10 @@ mkdir -p "$BIN_DIR"
 echo "Copying theme files..."
 cp -r contents/* "$THEME_DIR/contents/"
 cp metadata.desktop "$THEME_DIR/"
+
+# Copy color scheme
+echo "Installing Unity Dark color scheme..."
+cp colors/UnityDark.colors "$COLOR_DIR/"
 
 # Install Latte Dock layout if Latte is installed
 if command -v latte-dock &>/dev/null; then
@@ -66,7 +73,7 @@ fi
 echo ""
 echo "To apply the theme:"
 echo "1. Open System Settings → Appearance → Global Themes"
-echo "2. Select 'Ubuntu Unity'"
+echo "2. Select 'Unity'"
 echo "3. Click 'Apply'"
 echo ""
 echo "Or the theme will be applied automatically on next login."
