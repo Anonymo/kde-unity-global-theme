@@ -13,9 +13,11 @@ depends=(
     'yaru-icon-theme'
     'yaru-gtk-theme'
     'ubuntu-wallpapers'
-    'latte-dock'
     'plasma-browser-integration'
     'plasma-integration'
+)
+optdepends=(
+    'latte-dock: Unity-style dock (may have compatibility issues with Plasma 6)'
 )
 makedepends=('git')
 source=("git+$url.git")

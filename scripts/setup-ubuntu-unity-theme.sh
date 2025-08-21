@@ -46,15 +46,20 @@ $KWRITECONFIG --file plasmarc --group "Theme" --key "name" "Unity"
 # Configure panel height (24px Unity style)
 $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel" --group "Defaults" --key "thickness" "24"
 
-# Configure Latte Dock with Unity layout
+# Configure Latte Dock with Unity layout (if installed and compatible)
 if command -v latte-dock &>/dev/null; then
+    echo "Configuring Latte Dock for Unity layout..."
     $KWRITECONFIG --file lattedockrc --group "UniversalSettings" --key "currentLayout" "Unity"
     $KWRITECONFIG --file lattedockrc --group "PlasmaThemeExtended" --key "backgroundOpacity" "64"
     
-    # Start Latte Dock
+    # Try to start Latte Dock (may not work perfectly with Plasma 6)
     killall latte-dock 2>/dev/null || true
     sleep 1
     latte-dock &>/dev/null &
+    echo "Note: Latte Dock may have compatibility issues with Plasma 6"
+else
+    echo "Latte Dock not installed - using default Plasma panel instead"
+    echo "For Unity-style dock, you can try: yay -S latte-dock (compatibility not guaranteed)"
 fi
 
 # Set KRunner shortcut to Alt+Space (Unity HUD style)

@@ -10,8 +10,13 @@ Transform your KDE desktop to look like Ubuntu Unity - complete with the iconic 
 
 1. **Install required packages:**
 ```bash
-yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers latte-dock plasma-browser-integration plasma-integration
+yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers plasma-browser-integration plasma-integration
 ```
+
+   **Optional:** Install Latte Dock for Unity-style dock (may not work perfectly with Plasma 6):
+   ```bash
+   yay -S latte-dock
+   ```
 
 2. **Download and build the theme:**
 ```bash
