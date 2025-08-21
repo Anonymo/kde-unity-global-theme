@@ -12,28 +12,44 @@ This theme brings the distinctive Ubuntu Unity look and feel to KDE Plasma deskt
 - Unity-inspired window decorations
 - Ubuntu color schemes (Ambiance/Radiance)
 - Panel styling matching Unity's top bar
-- Consistent theming across all Plasma components
+- Consistent theming across Plasma 6 components
 - Support for both light and dark variants
-- Customizable components for mixing and matching
 
 </details>
 
 ## Installation
 
 <details>
-<summary><b>📦 From KDE Store</b></summary>
+<summary><b>🔧 Installation Instructions</b></summary>
 
-1. Open System Settings → Appearance → Global Themes
-2. Click "Get New Global Themes..."
-3. Search for "Unity"
-4. Click Install
-
-</details>
-
-<details>
-<summary><b>🔧 Manual Installation</b></summary>
-
+### Arch Linux / CachyOS
 ```bash
+git clone https://github.com/Anonymo/kde-unity-global-theme.git
+cd kde-unity-global-theme
+./install.sh
+```
+
+### Fedora 41+
+```bash
+sudo dnf install git
+git clone https://github.com/Anonymo/kde-unity-global-theme.git
+cd kde-unity-global-theme
+./install.sh
+```
+
+### Ubuntu 25.04+
+```bash
+sudo apt update
+sudo apt install git
+git clone https://github.com/Anonymo/kde-unity-global-theme.git
+cd kde-unity-global-theme
+./install.sh
+```
+
+### Debian Testing/Sid
+```bash
+sudo apt update
+sudo apt install git
 git clone https://github.com/Anonymo/kde-unity-global-theme.git
 cd kde-unity-global-theme
 ./install.sh
@@ -44,9 +60,9 @@ cd kde-unity-global-theme
 <details>
 <summary><b>📋 Requirements</b></summary>
 
-- KDE Plasma 5.24 or later
-- Qt 5.15 or later
-- Git (for manual installation)
+- KDE Plasma 6.0 or later
+- Qt 6.4 or later
+- Git
 - Bash shell
 
 </details>
@@ -59,10 +75,7 @@ cd kde-unity-global-theme
 - **Plasma Theme**: Unity-styled panels and widgets
 - **Color Scheme**: Ubuntu Ambiance and Radiance colors
 - **Window Decorations**: Unity-style window borders and buttons
-- **Icons**: Ubuntu Yaru icons (optional)
-- **Cursors**: Unity cursor theme
-- **Splash Screen**: Ubuntu Unity boot splash
-- **Latte Layout**: Pre-configured Unity-style dock
+- **Latte Layout**: Pre-configured Unity-style dock configuration
 
 </details>
 
@@ -99,40 +112,24 @@ You can mix and match components:
 
 </details>
 
-## Screenshots
-
-<details>
-<summary><b>📸 Preview Images</b></summary>
-
-![Desktop Overview](screenshots/desktop.png)
-*Full desktop with Unity-style panel and dock*
-
-![Panel Close-up](screenshots/panel.png)
-*Top panel with global menu and system indicators*
-
-![Window Decorations](screenshots/windows.png)
-*Unity-style window buttons and borders*
-
-</details>
 
 ## Compatibility
 
 <details>
-<summary><b>✅ Tested Distributions</b></summary>
+<summary><b>✅ Compatible Distributions</b></summary>
 
-### Officially Tested
-- Kubuntu 22.04 LTS
-- Kubuntu 24.04 LTS
-- KDE Neon (latest)
-- openSUSE Tumbleweed with KDE
-
-### Community Reported Working
-- Fedora KDE Spin 38+
-- Manjaro KDE
+### KDE Plasma 6 Distributions
+- Ubuntu 25.04+ (upcoming)
+- Fedora 41+ KDE Spin
+- Arch Linux (latest)
+- CachyOS
 - EndeavourOS KDE
-- Debian 12 with KDE
+- Manjaro KDE (unstable/testing)
+- openSUSE Tumbleweed
+- Debian Testing/Sid
+- KDE Neon Testing/Unstable
 
-Should work on any distribution with KDE Plasma 5.24+
+**Note:** This theme requires KDE Plasma 6 and will NOT work on older Plasma 5 distributions.
 
 </details>
 
@@ -143,7 +140,7 @@ Should work on any distribution with KDE Plasma 5.24+
 
 ### Theme not appearing after installation
 - Ensure all files have correct permissions: `chmod -R 755 ~/.local/share/plasma/`
-- Restart KDE: `kquitapp5 plasmashell && kstart5 plasmashell`
+- Restart KDE: `systemctl --user restart plasma-plasmashell.service`
 
 ### Panel not looking correct
 - Reset panel to defaults first, then reapply theme
@@ -175,7 +172,7 @@ Contributions are welcome! Here's how you can help:
 git clone https://github.com/Anonymo/kde-unity-global-theme.git
 cd kde-unity-global-theme
 # Make your changes
-./install.sh --dev  # Install in development mode
+./install.sh  # Install the theme
 ```
 
 </details>
