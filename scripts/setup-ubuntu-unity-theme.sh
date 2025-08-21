@@ -25,11 +25,11 @@ $KWRITECONFIG --file kdeglobals --group "WM" --key "activeFont" "Ubuntu,11,-1,5,
 # Configure color scheme
 $KWRITECONFIG --file kdeglobals --group "General" --key "ColorScheme" "UnityDark"
 
-# Configure window decorations for Unity style (close, minimize, maximize on left)
+# Configure window decorations for Unity style (ALL buttons on left like Ubuntu Unity)
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze"
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Breeze"
-$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnLeft" "XNM"
-$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnRight" "IA"
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnLeft" "XSMIA"
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnRight" ""
 
 # Enable borderless maximized windows (Unity style)
 $KWRITECONFIG --file kwinrc --group "Windows" --key "BorderlessMaximizedWindows" "true"
