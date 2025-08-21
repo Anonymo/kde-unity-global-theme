@@ -4,23 +4,26 @@ Transform your KDE desktop to look like Ubuntu Unity - complete with the iconic 
 
 **⚠️ Requirements:** KDE Plasma 6 only (won't work on older versions)
 
-## Quick Install
+## Installation
 
-### For Arch Linux / CachyOS Users (Recommended)
+### Arch Linux / CachyOS (Recommended)
 
-1. **Download and build the package:**
+1. **Install required packages:**
+```bash
+yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers latte-dock plasma-browser-integration plasma-integration
+```
+
+2. **Download and build the theme:**
 ```bash
 git clone https://github.com/Anonymo/kde-unity-global-theme.git
 cd kde-unity-global-theme
 ./build-package.sh
 ```
 
-2. **Install the package:**
+3. **Install the package:**
 ```bash
 sudo pacman -U kde-unity-global-theme-*.pkg.tar.zst
 ```
-
-3. **All dependencies will be installed automatically** (fonts, icons, wallpapers, dock)
 
 4. **Apply the theme:**
    - Open **System Settings** → **Appearance** → **Global Themes**
