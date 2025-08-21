@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "noreply@unity-theme.org",
+                "Name": "Unity Theme Team"
+            }
+        ],
+        "Category": "Application Launchers",
+        "Description": "Unity-style Dash search interface for KDE Plasma",
+        "Icon": "applications-other",
+        "Id": "org.kde.unity.dash",
+        "License": "GPL-2.0+",
+        "Name": "Unity Dash",
+        "Version": "1.0",
+        "Website": "https://github.com/Anonymo/kde-unity-global-theme"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.launchermenu"
+    ]
+}

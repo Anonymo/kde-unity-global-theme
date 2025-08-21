@@ -13,17 +13,20 @@ if [ "$EUID" -eq 0 ]; then
     COLOR_DIR="/usr/share/color-schemes"
     AUTOSTART_DIR="/etc/xdg/autostart"
     BIN_DIR="/usr/local/bin"
+    PLASMOID_DIR="/usr/share/plasma/plasmoids"
     SYSTEM_INSTALL=true
 else
     THEME_DIR="$HOME/.local/share/plasma/look-and-feel/org.kde.unity.desktop"
     COLOR_DIR="$HOME/.local/share/color-schemes"
     AUTOSTART_DIR="$HOME/.config/autostart"
     BIN_DIR="$HOME/.local/bin"
+    PLASMOID_DIR="$HOME/.local/share/plasma/plasmoids"
     SYSTEM_INSTALL=false
 fi
 
 # Create directories
 mkdir -p "$THEME_DIR/contents"
+mkdir -p "$PLASMOID_DIR"
 if [ "$SYSTEM_INSTALL" = true ]; then
     mkdir -p /usr/share/plasma/desktoptheme/Unity
     mkdir -p /usr/share/aurorae/themes/Unity
@@ -65,6 +68,23 @@ mkdir -p "$GTK_CONFIG_DIR"
 cp gtk/settings.ini "$GTK_CONFIG_DIR/"
 cp gtk/gtk-4.0.ini "$GTK_CONFIG_DIR/"
 cp gtk/gtkrc-2.0 "$GTK_CONFIG_DIR/"
+
+# Install Unity Dash plasmoid
+if [ -d "plasma/plasmoids/org.kde.unity.dash" ]; then
+    echo "Installing Unity Dash plasmoid..."
+    cp -r plasma/plasmoids/org.kde.unity.dash "$PLASMOID_DIR/"
+fi
+
+# Install fixed Yaru icons for system tray
+if [ -d "icons/Yaru-fixed" ]; then
+    echo "Installing Yaru-fixed icon theme..."
+    if [ "$SYSTEM_INSTALL" = true ]; then
+        cp -r icons/Yaru-fixed /usr/share/icons/
+    else
+        mkdir -p "$HOME/.local/share/icons"
+        cp -r icons/Yaru-fixed "$HOME/.local/share/icons/"
+    fi
+fi
 
 # Unity layout will be configured using KDE's native panels
 

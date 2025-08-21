@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "noreply@unity-theme.org",
+                "Name": "Unity Theme Team"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "Unity-style HUD (Heads-Up Display) for menu search",
+        "Icon": "search",
+        "Id": "org.kde.unity.hud",
+        "License": "GPL-2.0+",
+        "Name": "Unity HUD",
+        "Version": "1.0",
+        "Website": "https://github.com/Anonymo/kde-unity-global-theme"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.hud"
+    ]
+}

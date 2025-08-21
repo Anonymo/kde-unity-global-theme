@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Unity
+Comment=Unity-style Plasma theme
+Encoding=UTF-8
+Keywords=desktop;theme;Unity;Ubuntu
+X-KDE-PluginInfo-Author=Anonymo
+X-KDE-PluginInfo-Email=meowdib@gmail.com
+X-KDE-PluginInfo-Name=Unity
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=https://github.com/Anonymo/kde-unity-global-theme
+X-KDE-PluginInfo-Category=Plasma Theme
+X-KDE-PluginInfo-License=GPL-3.0
+X-KDE-PluginInfo-EnabledByDefault=true
+X-Plasma-API=5.0

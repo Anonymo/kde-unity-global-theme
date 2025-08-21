@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment=Ubuntu Unity look for KDE Plasma 6
+Comment[en_US]=Ubuntu Unity look for KDE Plasma 6
+Name=Unity
+Name[en_US]=Unity
+X-KDE-PluginInfo-Author=Anonymo
+X-KDE-PluginInfo-Category=Plasma Look And Feel
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-License=GPL-3.0
+X-KDE-PluginInfo-Name=Unity
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=https://github.com/Anonymo/kde-unity-global-theme
+X-KDE-ServiceTypes=Plasma/LookAndFeel
+X-Plasma-MainScript=defaults
+Type=Service
