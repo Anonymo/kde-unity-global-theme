@@ -4,7 +4,7 @@ Transform your KDE desktop to look like Ubuntu Unity - complete with the iconic 
 
 **⚠️ Requirements:** KDE Plasma 6 only (won't work on older versions)
 
-## Installation
+## Easy Installation
 
 ### Arch Linux / CachyOS (Recommended)
 
