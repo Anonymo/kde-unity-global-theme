@@ -11,6 +11,7 @@ optdepends=(
     'ttf-ubuntu-font-family: Ubuntu fonts for authentic Unity look'
     'yaru-icon-theme: Ubuntu Yaru icons'
     'yaru-gtk-theme: For GTK application theming'
+    'ubuntu-wallpapers: Official Ubuntu wallpapers collection'
     'latte-dock: For Unity-style dock'
     'plasma-browser-integration: For global menu in browsers'
 )
@@ -23,16 +24,30 @@ package() {
     
     # Theme directory
     install -dm755 "$pkgdir/usr/share/plasma/look-and-feel/Unity"
+    install -dm755 "$pkgdir/usr/share/plasma/desktoptheme/Unity"
+    install -dm755 "$pkgdir/usr/share/aurorae/themes/Unity"
     
-    # Install theme files
+    # Install look-and-feel theme files
     cp -r contents "$pkgdir/usr/share/plasma/look-and-feel/Unity/"
     install -Dm644 metadata.desktop "$pkgdir/usr/share/plasma/look-and-feel/Unity/metadata.desktop"
+    
+    # Install Plasma desktop theme
+    cp -r plasma/desktoptheme/Unity/* "$pkgdir/usr/share/plasma/desktoptheme/Unity/"
+    
+    # Install window decoration theme
+    cp -r aurorae/Unity/* "$pkgdir/usr/share/aurorae/themes/Unity/"
     
     # Install color scheme
     install -Dm644 colors/UnityDark.colors "$pkgdir/usr/share/color-schemes/UnityDark.colors"
     
     # Install Latte layout
     install -Dm644 latte/Unity.layout.latte "$pkgdir/usr/share/latte/layouts/Unity.layout.latte"
+    
+    # Install GTK configuration
+    install -dm755 "$pkgdir/usr/share/$pkgname/gtk"
+    install -Dm644 gtk/settings.ini "$pkgdir/usr/share/$pkgname/gtk/settings.ini"
+    install -Dm644 gtk/gtk-4.0.ini "$pkgdir/usr/share/$pkgname/gtk/gtk-4.0.ini"
+    install -Dm644 gtk/gtkrc-2.0 "$pkgdir/usr/share/$pkgname/gtk/gtkrc-2.0"
     
     # Install setup script
     install -Dm755 scripts/setup-ubuntu-unity-theme.sh "$pkgdir/usr/bin/unity-theme-setup"
@@ -56,7 +71,7 @@ post_install() {
     echo "For automatic setup, run: unity-theme-setup"
     echo ""
     echo "Optional: Install recommended packages for best experience:"
-    echo "  pacman -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme"
+    echo "  pacman -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers"
     echo ""
 }
 

@@ -72,10 +72,22 @@ cd kde-unity-global-theme
 <details>
 <summary><b>🎨 Included Components</b></summary>
 
-- **Plasma Theme**: Unity-styled panels and widgets
-- **Color Scheme**: Ubuntu Ambiance and Radiance colors
-- **Window Decorations**: Unity-style window borders and buttons
-- **Latte Layout**: Pre-configured Unity-style dock configuration
+### Core Theme Components
+- **Look-and-Feel Theme**: Complete Unity visual package for Plasma 6
+- **Plasma Desktop Theme**: Unity-styled panels with dark gradient background
+- **Color Scheme**: Unity Dark with Ubuntu orange (#e66100) accent colors
+- **Window Decorations**: Unity-style titlebar with buttons on the left (close, minimize, maximize)
+
+### Layout & Configuration  
+- **Latte Dock Layout**: Left-side Unity dock with 42px icons and 64% transparency
+- **Panel Configuration**: 24px height top panel (Unity standard)
+- **Font Configuration**: Ubuntu font family (11pt general, 13pt monospace)
+
+### Integration
+- **GTK Theme Integration**: Yaru-dark theme for GTK applications
+- **Keyboard Shortcuts**: Alt+Space for search (HUD-style), Super key for launcher
+- **Global Menu**: Application menu integration in top panel
+- **Setup Script**: Automatic configuration tool (`unity-theme-setup`)
 
 </details>
 

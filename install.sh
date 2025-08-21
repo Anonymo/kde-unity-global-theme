@@ -26,19 +26,48 @@ fi
 
 # Create directories
 mkdir -p "$THEME_DIR/contents"
+if [ "$SYSTEM_INSTALL" = true ]; then
+    mkdir -p /usr/share/plasma/desktoptheme/Unity
+    mkdir -p /usr/share/aurorae/themes/Unity
+    PLASMA_THEME_DIR="/usr/share/plasma/desktoptheme/Unity"
+    AURORAE_DIR="/usr/share/aurorae/themes/Unity"
+    GTK_CONFIG_DIR="/usr/share/kde-unity-global-theme/gtk"
+else
+    mkdir -p "$HOME/.local/share/plasma/desktoptheme/Unity"
+    mkdir -p "$HOME/.local/share/aurorae/themes/Unity" 
+    PLASMA_THEME_DIR="$HOME/.local/share/plasma/desktoptheme/Unity"
+    AURORAE_DIR="$HOME/.local/share/aurorae/themes/Unity"
+    GTK_CONFIG_DIR="$HOME/.local/share/kde-unity-global-theme/gtk"
+fi
 mkdir -p "$LATTE_DIR"
 mkdir -p "$COLOR_DIR"
 mkdir -p "$AUTOSTART_DIR"
 mkdir -p "$BIN_DIR"
+mkdir -p "$(dirname "$GTK_CONFIG_DIR")"
 
-# Copy theme files
-echo "Copying theme files..."
+# Copy look-and-feel theme files
+echo "Installing Unity look-and-feel theme..."
 cp -r contents/* "$THEME_DIR/contents/"
 cp metadata.desktop "$THEME_DIR/"
+
+# Copy Plasma desktop theme
+echo "Installing Unity Plasma theme..."
+cp -r plasma/desktoptheme/Unity/* "$PLASMA_THEME_DIR/"
+
+# Copy window decoration theme
+echo "Installing Unity window decorations..."
+cp -r aurorae/Unity/* "$AURORAE_DIR/"
 
 # Copy color scheme
 echo "Installing Unity Dark color scheme..."
 cp colors/UnityDark.colors "$COLOR_DIR/"
+
+# Copy GTK configuration
+echo "Installing GTK theme configuration..."
+mkdir -p "$GTK_CONFIG_DIR"
+cp gtk/settings.ini "$GTK_CONFIG_DIR/"
+cp gtk/gtk-4.0.ini "$GTK_CONFIG_DIR/"
+cp gtk/gtkrc-2.0 "$GTK_CONFIG_DIR/"
 
 # Install Latte Dock layout if Latte is installed
 if command -v latte-dock &>/dev/null; then

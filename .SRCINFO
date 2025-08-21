@@ -11,6 +11,7 @@ pkgbase = kde-unity-global-theme
 	optdepends = ttf-ubuntu-font-family: Ubuntu fonts for authentic Unity look
 	optdepends = yaru-icon-theme: Ubuntu Yaru icons
 	optdepends = yaru-gtk-theme: For GTK application theming
+	optdepends = ubuntu-wallpapers: Official Ubuntu wallpapers collection
 	optdepends = latte-dock: For Unity-style dock
 	optdepends = plasma-browser-integration: For global menu in browsers
 	source = git+https://github.com/Anonymo/kde-unity-global-theme.git
