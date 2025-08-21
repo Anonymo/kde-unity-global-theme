@@ -10,9 +10,9 @@ KWRITECONFIG="kwriteconfig6"
 
 # Apply Unity look and feel
 if command -v plasma-apply-lookandfeel &>/dev/null; then
-    plasma-apply-lookandfeel -a Unity 2>/dev/null || true
+    plasma-apply-lookandfeel -a org.kde.unity.desktop 2>/dev/null || true
 else
-    lookandfeeltool -a Unity 2>/dev/null || true
+    lookandfeeltool -a org.kde.unity.desktop 2>/dev/null || true
 fi
 
 # Configure fonts (Ubuntu family with Unity measurements)

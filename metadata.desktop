@@ -1,13 +1,17 @@
 [Desktop Entry]
 Comment=Ubuntu Unity look for KDE Plasma 6
 Name=Unity
+Keywords=Desktop;Workspace;Appearance;Look and Feel;Unity;Ubuntu;
+
+Type=Service
+
+X-KDE-ServiceTypes=Plasma/LookAndFeel
+X-KDE-ParentApp=
 X-KDE-PluginInfo-Author=Anonymo
-X-KDE-PluginInfo-Category=Plasma Look And Feel
+X-KDE-PluginInfo-Category=
 X-KDE-PluginInfo-Email=meowdib@gmail.com
-X-KDE-PluginInfo-EnabledByDefault=true
 X-KDE-PluginInfo-License=GPL-3.0
-X-KDE-PluginInfo-Name=Unity
+X-KDE-PluginInfo-Name=org.kde.unity.desktop
 X-KDE-PluginInfo-Version=1.0
 X-KDE-PluginInfo-Website=https://github.com/Anonymo/kde-unity-global-theme
-X-Plasma-API=6.0
-Type=Service
+X-Plasma-MainScript=defaults

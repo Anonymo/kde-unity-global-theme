@@ -25,13 +25,13 @@ package() {
     cd "$srcdir/$pkgname"
     
     # Theme directory
-    install -dm755 "$pkgdir/usr/share/plasma/look-and-feel/Unity"
+    install -dm755 "$pkgdir/usr/share/plasma/look-and-feel/org.kde.unity.desktop"
     install -dm755 "$pkgdir/usr/share/plasma/desktoptheme/Unity"
     install -dm755 "$pkgdir/usr/share/aurorae/themes/Unity"
     
     # Install look-and-feel theme files
-    cp -r contents "$pkgdir/usr/share/plasma/look-and-feel/Unity/"
-    install -Dm644 metadata.desktop "$pkgdir/usr/share/plasma/look-and-feel/Unity/metadata.desktop"
+    cp -r contents "$pkgdir/usr/share/plasma/look-and-feel/org.kde.unity.desktop/"
+    install -Dm644 metadata.json "$pkgdir/usr/share/plasma/look-and-feel/org.kde.unity.desktop/metadata.json"
     
     # Install Plasma desktop theme
     cp -r plasma/desktoptheme/Unity/* "$pkgdir/usr/share/plasma/desktoptheme/Unity/"

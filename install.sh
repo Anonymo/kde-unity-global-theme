@@ -9,14 +9,14 @@ echo "Installing Ubuntu Unity theme for KDE Plasma..."
 
 # Check if running as root for system-wide install
 if [ "$EUID" -eq 0 ]; then
-    THEME_DIR="/usr/share/plasma/look-and-feel/Unity"
+    THEME_DIR="/usr/share/plasma/look-and-feel/org.kde.unity.desktop"
     LATTE_DIR="/usr/share/latte/layouts"
     COLOR_DIR="/usr/share/color-schemes"
     AUTOSTART_DIR="/etc/xdg/autostart"
     BIN_DIR="/usr/local/bin"
     SYSTEM_INSTALL=true
 else
-    THEME_DIR="$HOME/.local/share/plasma/look-and-feel/Unity"
+    THEME_DIR="$HOME/.local/share/plasma/look-and-feel/org.kde.unity.desktop"
     LATTE_DIR="$HOME/.local/share/latte/layouts"
     COLOR_DIR="$HOME/.local/share/color-schemes"
     AUTOSTART_DIR="$HOME/.config/autostart"
@@ -48,7 +48,7 @@ mkdir -p "$(dirname "$GTK_CONFIG_DIR")"
 # Copy look-and-feel theme files
 echo "Installing Unity look-and-feel theme..."
 cp -r contents/* "$THEME_DIR/contents/"
-cp metadata.desktop "$THEME_DIR/"
+cp metadata.json "$THEME_DIR/"
 
 # Copy Plasma desktop theme
 echo "Installing Unity Plasma theme..."

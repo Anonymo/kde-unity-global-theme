@@ -1,0 +1,17 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "meowdib@gmail.com",
+                "Name": "Anonymo"
+            }
+        ],
+        "Category": "",
+        "Description": "Ubuntu Unity look and feel for KDE Plasma 6",
+        "Id": "org.kde.unity.desktop",
+        "License": "GPL-3.0",
+        "Name": "Unity",
+        "Website": "https://github.com/Anonymo/kde-unity-global-theme"
+    }
+}
