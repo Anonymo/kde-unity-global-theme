@@ -15,7 +15,7 @@ depends=(
     'ubuntu-wallpapers'
     'latte-dock'
     'plasma-browser-integration'
-    'plasma6-integration'
+    'plasma-integration'
 )
 makedepends=('git')
 source=("git+$url.git")

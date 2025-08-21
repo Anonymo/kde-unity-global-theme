@@ -14,7 +14,7 @@ pkgbase = kde-unity-global-theme
 	depends = ubuntu-wallpapers
 	depends = latte-dock
 	depends = plasma-browser-integration
-	depends = plasma6-integration
+	depends = plasma-integration
 	source = git+https://github.com/Anonymo/kde-unity-global-theme.git
 	sha256sums = SKIP
 
