@@ -20,10 +20,7 @@ cd kde-unity-global-theme
 sudo pacman -U kde-unity-global-theme-*.pkg.tar.zst
 ```
 
-3. **Install recommended extras:**
-```bash
-sudo pacman -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers latte-dock
-```
+3. **All dependencies will be installed automatically** (fonts, icons, wallpapers, dock)
 
 4. **Apply the theme:**
    - Open **System Settings** → **Appearance** → **Global Themes**

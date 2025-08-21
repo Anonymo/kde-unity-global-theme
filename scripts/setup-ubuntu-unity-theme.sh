@@ -80,8 +80,23 @@ fi
 # Configure KDE to use GTK theme
 $KWRITECONFIG --file kdeglobals --group "KDE" --key "widgetStyle" "Breeze"
 
-# Enable global menu for supported applications
+# Enable global menu (Unity-style)
 $KWRITECONFIG --file kdeglobals --group "General" --key "menuBar" "Disabled"
+
+# Configure global menu for applications
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze" 
+$KWRITECONFIG --file plasmarc --group "General" --key "showToolTips" "true"
+
+# Enable appmenu for global menu functionality
+$KWRITECONFIG --file kdeglobals --group "General" --key "menuBar" "Disabled"
+export QT_QPA_PLATFORMTHEME=kde
+export GTK_MODULES=appmenu-gtk-module
+
+# Configure KRunner for HUD-like functionality
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "appstreamEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "servicesEnabled" "true" 
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "placesEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "recentdocumentsEnabled" "true"
 
 # Restart Plasma Shell and KWin to apply changes
 if command -v systemctl &>/dev/null && systemctl --user is-active plasma-plasmashell.service &>/dev/null; then

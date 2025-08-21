@@ -6,14 +6,16 @@ pkgdesc="Ubuntu Unity look and feel for KDE Plasma 6"
 arch=('any')
 url="https://github.com/Anonymo/kde-unity-global-theme"
 license=('GPL3')
-depends=('plasma-desktop>=6.0' 'qt6-base>=6.4')
-optdepends=(
-    'ttf-ubuntu-font-family: Ubuntu fonts for authentic Unity look'
-    'yaru-icon-theme: Ubuntu Yaru icons'
-    'yaru-gtk-theme: For GTK application theming'
-    'ubuntu-wallpapers: Official Ubuntu wallpapers collection'
-    'latte-dock: For Unity-style dock'
-    'plasma-browser-integration: For global menu in browsers'
+depends=(
+    'plasma-desktop>=6.0' 
+    'qt6-base>=6.4'
+    'ttf-ubuntu-font-family'
+    'yaru-icon-theme'
+    'yaru-gtk-theme'
+    'ubuntu-wallpapers'
+    'latte-dock'
+    'plasma-browser-integration'
+    'plasma6-integration'
 )
 makedepends=('git')
 source=("git+$url.git")
@@ -70,8 +72,7 @@ post_install() {
     echo ""
     echo "For automatic setup, run: unity-theme-setup"
     echo ""
-    echo "Optional: Install recommended packages for best experience:"
-    echo "  pacman -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers"
+    echo "All required packages have been installed automatically."
     echo ""
 }
 
