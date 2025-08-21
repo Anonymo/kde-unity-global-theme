@@ -28,7 +28,7 @@ $KWRITECONFIG --file kdeglobals --group "General" --key "ColorScheme" "UnityDark
 # Configure window decorations for Unity style (close, minimize, maximize grouped on left)
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze"
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Breeze"
-$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnLeft" "XNMIA"
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnLeft" "XIA"
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnRight" ""
 
 # Enable borderless maximized windows (Unity style)
