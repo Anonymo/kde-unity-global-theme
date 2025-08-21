@@ -13,6 +13,7 @@ depends=(
     'yaru-icon-theme'
     'yaru-gtk-theme'
     'ubuntu-wallpapers'
+    'papirus-icon-theme'
     'plasma-browser-integration'
     'plasma-integration'
 )

@@ -10,7 +10,7 @@ Transform your KDE desktop to look like Ubuntu Unity - complete with the iconic 
 
 1. **Install required packages:**
 ```bash
-yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers plasma-browser-integration plasma-integration
+yay -S ttf-ubuntu-font-family yaru-icon-theme yaru-gtk-theme ubuntu-wallpapers papirus-icon-theme plasma-browser-integration plasma-integration
 ```
 
 2. **Download and build the theme:**

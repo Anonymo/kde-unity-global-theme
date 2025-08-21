@@ -12,6 +12,7 @@ pkgbase = kde-unity-global-theme
 	depends = yaru-icon-theme
 	depends = yaru-gtk-theme
 	depends = ubuntu-wallpapers
+	depends = papirus-icon-theme
 	depends = plasma-browser-integration
 	depends = plasma-integration
 	source = git+https://github.com/Anonymo/kde-unity-global-theme.git

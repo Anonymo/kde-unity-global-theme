@@ -9,9 +9,12 @@ fixed=Ubuntu Mono,13,-1,5,50,0,0,0,0,0
 smallestReadableFont=Ubuntu,9,-1,5,50,0,0,0,0,0
 toolBarFont=Ubuntu,10,-1,5,50,0,0,0,0,0
 desktopFont=Ubuntu,10,-1,5,50,0,0,0,0,0
+menuBar=Disabled
+DBusMenu=true
 
 [kdeglobals][Icons]
 Theme=Yaru-dark
+FallbackTheme=Papirus-Dark,breeze-dark,Adwaita,breeze,hicolor
 
 [kdeglobals][WM]
 activeBackground=230,97,0
