@@ -37,9 +37,9 @@ $KWRITECONFIG --file kwinrc --group "Windows" --key "BorderlessMaximizedWindows"
 # Disable wobbly windows effect (remove wiggling when moving windows)
 $KWRITECONFIG --file kwinrc --group "Plugins" --key "wobblywindowsEnabled" "false"
 
-# Configure icon theme - USE WORKING PAPIRUS with better visibility
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Papirus"
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "FallbackTheme" "Papirus-Light,breeze,Adwaita,hicolor" 
+# Configure icon theme - USE PAPIRUS-LIGHT for dark theme visibility
+$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Papirus-Light"
+$KWRITECONFIG --file kdeglobals --group "Icons" --key "FallbackTheme" "breeze,Adwaita,hicolor" 
 
 # Force refresh icon cache for working themes only
 gtk-update-icon-cache -f -t /usr/share/icons/Papirus/ 2>/dev/null || true
