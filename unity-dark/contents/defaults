@@ -9,21 +9,18 @@ fixed=Ubuntu Mono,13,-1,5,50,0,0,0,0,0
 smallestReadableFont=Ubuntu,9,-1,5,50,0,0,0,0,0
 toolBarFont=Ubuntu,10,-1,5,50,0,0,0,0,0
 desktopFont=Ubuntu,10,-1,5,50,0,0,0,0,0
-menuBar=Disabled
-DBusMenu=true
 
 [kdeglobals][Icons]
 Theme=Papirus-Dark
-FallbackTheme=breeze-dark,Adwaita,hicolor
 
 [kdeglobals][WM]
 activeBackground=230,97,0
 activeBlend=230,97,0
 activeForeground=255,255,255
 activeFont=Ubuntu,11,-1,5,75,0,0,0,0,0
-inactiveBackground=20,20,20
-inactiveBlend=20,20,20
-inactiveForeground=180,180,180
+inactiveBackground=45,45,45
+inactiveBlend=45,45,45
+inactiveForeground=161,169,177
 
 [plasmarc][Theme]
 name=Unity
@@ -32,55 +29,8 @@ name=Unity
 defaultWallpaperTheme=warty-final-ubuntu.png
 defaultFileSuffix=.png
 
-[kwinrc][org.kde.kdecoration2]
-library=org.kde.breeze
-theme=Breeze
-BorderlessMaximizedWindows=true
-
 [kcminputrc][Mouse]
 cursorTheme=Yaru
-
-[klaunchrc][FeedbackStyle]
-BusyCursor=false
-
-[plasmashellrc][PlasmaViews][Panel][Defaults]
-thickness=24
-floating=0
-lengthMode=1
-maxLength=1
-minLength=1
-offset=0
-
-[krunnerrc][Plugins]
-PowerDevilEnabled=true
-appstreamEnabled=true
-baloosearchEnabled=true
-bookmarksEnabled=true
-desktopsessionsEnabled=true
-killEnabled=true
-locationsEnabled=true
-placesEnabled=true
-recentdocumentsEnabled=true
-servicesEnabled=true
-shellEnabled=true
-webshortcutsEnabled=true
-windowsEnabled=true
-
-[kglobalshortcutsrc][plasmashell]
-activate application launcher=Meta,Meta,Activate Application Launcher
-
-[kglobalshortcutsrc][krunner]
-_launch=Alt+Space,Alt+Space,KRunner
-
-[plasmashellrc][PlasmaViews][Panel 1]
-alignment=132
-floating=0
-panelVisibility=0
-thickness=24
-maxLength=1
-minLength=1
-offset=0
-lengthMode=1
 
 [kdeglobals][Colors:View]
 BackgroundAlternate=10,10,10
@@ -97,8 +47,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Window]
-BackgroundAlternate=15,15,15
-BackgroundNormal=0,0,0
+BackgroundAlternate=20,20,20
+BackgroundNormal=10,10,10
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -111,8 +61,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Button]
-BackgroundAlternate=20,20,20
-BackgroundNormal=5,5,5
+BackgroundAlternate=35,35,35
+BackgroundNormal=25,25,25
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -137,8 +87,8 @@ ForegroundPositive=255,255,255
 ForegroundVisited=255,255,255
 
 [kdeglobals][Colors:Tooltip]
-BackgroundAlternate=20,20,20
-BackgroundNormal=5,5,5
+BackgroundAlternate=35,35,35
+BackgroundNormal=25,25,25
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -151,8 +101,8 @@ ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Complementary]
-BackgroundAlternate=15,15,15
-BackgroundNormal=0,0,0
+BackgroundAlternate=20,20,20
+BackgroundNormal=10,10,10
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0

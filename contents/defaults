@@ -9,12 +9,9 @@ fixed=Ubuntu Mono,13,-1,5,50,0,0,0,0,0
 smallestReadableFont=Ubuntu,9,-1,5,50,0,0,0,0,0
 toolBarFont=Ubuntu,10,-1,5,50,0,0,0,0,0
 desktopFont=Ubuntu,10,-1,5,50,0,0,0,0,0
-menuBar=Disabled
-DBusMenu=true
 
 [kdeglobals][Icons]
 Theme=Papirus
-FallbackTheme=Papirus-Light,breeze,Adwaita,hicolor
 
 [kdeglobals][WM]
 activeBackground=230,97,0
@@ -32,55 +29,8 @@ name=Unity
 defaultWallpaperTheme=warty-final-ubuntu.png
 defaultFileSuffix=.png
 
-[kwinrc][org.kde.kdecoration2]
-library=org.kde.breeze
-theme=Breeze
-BorderlessMaximizedWindows=true
-
 [kcminputrc][Mouse]
 cursorTheme=Yaru
-
-[klaunchrc][FeedbackStyle]
-BusyCursor=false
-
-[plasmashellrc][PlasmaViews][Panel][Defaults]
-thickness=24
-floating=0
-lengthMode=1
-maxLength=1
-minLength=1
-offset=0
-
-[krunnerrc][Plugins]
-PowerDevilEnabled=true
-appstreamEnabled=true
-baloosearchEnabled=true
-bookmarksEnabled=true
-desktopsessionsEnabled=true
-killEnabled=true
-locationsEnabled=true
-placesEnabled=true
-recentdocumentsEnabled=true
-servicesEnabled=true
-shellEnabled=true
-webshortcutsEnabled=true
-windowsEnabled=true
-
-[kglobalshortcutsrc][plasmashell]
-activate application launcher=Meta,Meta,Activate Application Launcher
-
-[kglobalshortcutsrc][krunner]
-_launch=Alt+Space,Alt+Space,KRunner
-
-[plasmashellrc][PlasmaViews][Panel 1]
-alignment=132
-floating=0
-panelVisibility=0
-thickness=24
-maxLength=1
-minLength=1
-offset=0
-lengthMode=1
 
 [kdeglobals][Colors:View]
 BackgroundAlternate=247,247,247
