@@ -317,6 +317,11 @@ else
     plasmashell &>/dev/null &
 fi
 
+# FORCE icon theme back to Papirus after plasma restart (prevents any resets)
+sleep 3
+$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Papirus"
+echo "Icon theme locked to Papirus to prevent breaking"
+
 # Restart KWin to apply window decoration changes
 if command -v kwin_x11 &>/dev/null; then
     qdbus org.kde.KWin /KWin reconfigure 2>/dev/null || true
