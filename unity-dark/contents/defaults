@@ -2,8 +2,8 @@
 widgetStyle=Breeze
 
 [kdeglobals][General]
-ColorScheme=Unity
-Name=Unity
+ColorScheme=UnityDark
+Name=Unity Dark
 font=Ubuntu,11,-1,5,50,0,0,0,0,0
 fixed=Ubuntu Mono,13,-1,5,50,0,0,0,0,0
 smallestReadableFont=Ubuntu,9,-1,5,50,0,0,0,0,0
@@ -13,17 +13,17 @@ menuBar=Disabled
 DBusMenu=true
 
 [kdeglobals][Icons]
-Theme=Papirus
-FallbackTheme=Papirus-Light,breeze,Adwaita,hicolor
+Theme=Papirus-Dark
+FallbackTheme=breeze-dark,Adwaita,hicolor
 
 [kdeglobals][WM]
 activeBackground=230,97,0
 activeBlend=230,97,0
 activeForeground=255,255,255
 activeFont=Ubuntu,11,-1,5,75,0,0,0,0,0
-inactiveBackground=239,240,241
-inactiveBlend=239,240,241
-inactiveForeground=112,125,138
+inactiveBackground=20,20,20
+inactiveBlend=20,20,20
+inactiveForeground=180,180,180
 
 [plasmarc][Theme]
 name=Unity
@@ -88,8 +88,8 @@ offset=0
 lengthMode=1
 
 [kdeglobals][Colors:View]
-BackgroundAlternate=247,247,247
-BackgroundNormal=255,255,255
+BackgroundAlternate=10,10,10
+BackgroundNormal=0,0,0
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -97,13 +97,13 @@ ForegroundInactive=161,169,177
 ForegroundLink=101,179,246
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Window]
-BackgroundAlternate=241,241,241
-BackgroundNormal=239,240,241
+BackgroundAlternate=15,15,15
+BackgroundNormal=0,0,0
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -111,13 +111,13 @@ ForegroundInactive=161,169,177
 ForegroundLink=101,179,246
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Button]
-BackgroundAlternate=251,251,251
-BackgroundNormal=252,252,252
+BackgroundAlternate=20,20,20
+BackgroundNormal=5,5,5
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -125,7 +125,7 @@ ForegroundInactive=161,169,177
 ForegroundLink=101,179,246
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
@@ -137,13 +137,13 @@ ForegroundInactive=255,255,255
 ForegroundLink=255,255,255
 ForegroundNegative=255,255,255
 ForegroundNeutral=255,255,255
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=255,255,255
 ForegroundVisited=255,255,255
 
 [kdeglobals][Colors:Tooltip]
-BackgroundAlternate=250,250,250
-BackgroundNormal=255,255,255
+BackgroundAlternate=20,20,20
+BackgroundNormal=5,5,5
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -151,13 +151,13 @@ ForegroundInactive=161,169,177
 ForegroundLink=101,179,246
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179
 
 [kdeglobals][Colors:Complementary]
-BackgroundAlternate=241,241,241
-BackgroundNormal=239,240,241
+BackgroundAlternate=15,15,15
+BackgroundNormal=0,0,0
 DecorationFocus=230,97,0
 DecorationHover=230,97,0
 ForegroundActive=230,97,0
@@ -165,6 +165,6 @@ ForegroundInactive=161,169,177
 ForegroundLink=101,179,246
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=0,0,0
+ForegroundNormal=255,255,255
 ForegroundPositive=39,174,96
 ForegroundVisited=179,179,179

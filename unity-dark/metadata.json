@@ -1,0 +1,17 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "meowdib@gmail.com",
+                "Name": "Anonymo"
+            }
+        ],
+        "Category": "",
+        "Description": "Ubuntu Unity Dark/Black look and feel for KDE Plasma 6 - True black theme",
+        "Id": "org.kde.unity.dark.desktop",
+        "License": "GPL-3.0",
+        "Name": "Unity Dark",
+        "Website": "https://github.com/Anonymo/kde-unity-global-theme"
+    }
+}

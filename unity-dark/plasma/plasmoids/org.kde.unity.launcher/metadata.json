@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "noreply@unity-theme.org",
+                "Name": "Unity Theme Team"
+            }
+        ],
+        "Category": "Application Launchers",
+        "Description": "Unity-style launcher with quicklists, progress bars and badges",
+        "Icon": "applications-all",
+        "Id": "org.kde.unity.launcher",
+        "License": "GPL-2.0+",
+        "Name": "Unity Launcher",
+        "Version": "1.0",
+        "Website": "https://github.com/Anonymo/kde-unity-global-theme"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.applicationlauncher"
+    ]
+}
