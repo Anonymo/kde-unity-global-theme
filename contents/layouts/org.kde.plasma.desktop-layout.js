@@ -3,11 +3,12 @@ var panel = new Panel
 panel.location = "top"
 panel.height = 24
 
-// Top panel widgets (Unity-style: Global Menu | Spacer | System Tray | Clock)
+// Top panel widgets (Unity-style: Global Menu | Spacer | Clock | Spacer | System Tray)
 var globalMenu = panel.addWidget("org.kde.plasma.appmenu")
-var spacer = panel.addWidget("org.kde.plasma.panelspacer")
-var systemTray = panel.addWidget("org.kde.plasma.systemtray")
+var spacer1 = panel.addWidget("org.kde.plasma.panelspacer")
 var digitalClock = panel.addWidget("org.kde.plasma.digitalclock")
+var spacer2 = panel.addWidget("org.kde.plasma.panelspacer")
+var systemTray = panel.addWidget("org.kde.plasma.systemtray")
 
 // Left panel for Unity-style launcher/taskbar (Unity standard width: 72px)
 var leftPanel = new Panel
@@ -37,7 +38,14 @@ taskManager.writeConfig("showToolTips", true)
 taskManager.writeConfig("iconSize", 48)
 taskManager.writeConfig("vertical", true)
 
-// Configure separators to be minimal (Unity style)
+// Configure top panel spacers to center the clock (Unity style)
+spacer1.currentConfigGroup = ["General"]
+spacer1.writeConfig("expanding", true)
+
+spacer2.currentConfigGroup = ["General"] 
+spacer2.writeConfig("expanding", true)
+
+// Configure bottom panel separators to be minimal (Unity style)
 separator1.currentConfigGroup = ["General"]
 separator1.writeConfig("expanding", false)
 separator1.writeConfig("length", 1)
