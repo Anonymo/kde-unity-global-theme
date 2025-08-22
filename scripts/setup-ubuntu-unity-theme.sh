@@ -75,6 +75,11 @@ $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key
 $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "floating" "0"
 $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "panelVisibility" "2"
 
+# Add Unity workspace switcher to left launcher panel
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "20" --key "plugin" "org.kde.plasma.pager"
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "20" --group "Configuration" --group "General" --key "displayedText" "Number"
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "20" --group "Configuration" --group "General" --key "showWindowIcons" "true"
+
 echo "Unity Launcher configured with native KDE panels"
 
 # Configure KDE panels for Unity-style layout
