@@ -90,6 +90,48 @@ $KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+S
 $KWRITECONFIG --file kglobalshortcutsrc --group "plasmashell" --key "activate application launcher" "Meta,Meta,Activate Application Launcher"
 $KWRITECONFIG --file kglobalshortcutsrc --group "org.kde.plasma.emojier.desktop" --key "_launch" "none,none,Emoji Selector"
 
+# Configure Unity-style HUD using KRunner and Rofi
+echo "Setting up Unity-style HUD..."
+
+# Set KRunner shortcut to Alt+F2 (traditional launcher)
+$KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+F2,Alt+F2,KRunner"
+
+# Configure KRunner for better HUD-like behavior
+$KWRITECONFIG --file krunnerrc --group "General" --key "ActivateWhenTypingOnDesktop" "true"
+$KWRITECONFIG --file krunnerrc --group "General" --key "FreeFloating" "true"
+$KWRITECONFIG --file krunnerrc --group "General" --key "RetainPriorSearch" "false"
+
+# Set up Rofi as Unity HUD (Alt+Space like original Unity)
+if command -v rofi >/dev/null 2>&1; then
+    echo "Configuring Rofi as Unity HUD (Alt+Space)..."
+    # Create HUD script
+    mkdir -p ~/.local/bin
+    cat > ~/.local/bin/unity-hud <<'EOF'
+#!/bin/bash
+rofi -show drun -theme-str 'window {width: 50%; location: center; anchor: center;}' -theme-str 'listview {lines: 8;}' -theme-str 'inputbar {children: [prompt, textbox-prompt-colon, entry];}' -theme-str 'prompt {str: "HUD:";}' -no-lazy-grab -matching fuzzy
+EOF
+    chmod +x ~/.local/bin/unity-hud
+    
+    # Set global shortcut for Unity HUD
+    $KWRITECONFIG --file kglobalshortcutsrc --group "services" --key "unity-hud.desktop" "Alt+Space,none,Unity HUD"
+    
+    # Create desktop file for the shortcut
+    mkdir -p ~/.local/share/applications
+    cat > ~/.local/share/applications/unity-hud.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Name=Unity HUD
+Exec=$HOME/.local/bin/unity-hud
+NoDisplay=true
+StartupNotify=false
+EOF
+    
+    echo "Unity HUD configured: Press Alt+Space to access"
+else
+    echo "Rofi not found. Install with: pacman -S rofi"
+    echo "Using KRunner as fallback HUD (Alt+F2)"
+fi
+
 # GTK theme configuration
 mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
 

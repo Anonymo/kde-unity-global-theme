@@ -16,6 +16,7 @@ depends=(
     'papirus-icon-theme'
     'plasma-browser-integration'
     'plasma-integration'
+    'rofi'
 )
 makedepends=('git')
 source=("git+$url.git")
