@@ -62,6 +62,34 @@ cp -r aurorae/Unity/* "$AURORAE_DIR/"
 echo "Installing Unity Dark color scheme..."
 cp colors/UnityDark.colors "$COLOR_DIR/"
 
+# Install Ubuntu wallpapers if available
+echo "Setting up Ubuntu wallpapers..."
+if [ "$SYSTEM_INSTALL" = true ]; then
+    WALLPAPER_DIR="/usr/share/wallpapers/Ubuntu"
+    mkdir -p "$WALLPAPER_DIR"
+    # Copy wallpapers from system backgrounds if they exist
+    if [ -d "/usr/share/backgrounds" ]; then
+        find /usr/share/backgrounds -name "*ubuntu*" -o -name "*warty*" -exec cp {} "$WALLPAPER_DIR/" \; 2>/dev/null || true
+    fi
+else
+    WALLPAPER_DIR="$HOME/.local/share/wallpapers/Ubuntu"
+    mkdir -p "$WALLPAPER_DIR"
+    # Copy wallpapers from system backgrounds if they exist
+    if [ -d "/usr/share/backgrounds" ]; then
+        find /usr/share/backgrounds -name "*ubuntu*" -o -name "*warty*" -exec cp {} "$WALLPAPER_DIR/" \; 2>/dev/null || true
+    fi
+fi
+
+# Create wallpaper metadata
+cat > "$WALLPAPER_DIR/metadata.desktop" <<EOF
+[Desktop Entry]
+Name=Ubuntu Wallpapers
+X-KDE-PluginInfo-Name=Ubuntu
+X-KDE-PluginInfo-Author=Ubuntu Team
+X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-License=GPL
+EOF
+
 # Copy GTK configuration
 echo "Installing GTK theme configuration..."
 mkdir -p "$GTK_CONFIG_DIR"
