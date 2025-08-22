@@ -65,6 +65,18 @@ for icon_theme in /usr/share/icons/Papirus /usr/share/icons/Papirus-Light /usr/s
     fi
 done
 
+# Configure Unity Launcher (vertical dock on left using native KDE panels)
+echo "Setting up Unity Launcher..."
+
+# Configure left panel as Unity-style launcher
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "location" "3"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "thickness" "60"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "alignment" "132"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "floating" "0"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 2" --key "panelVisibility" "2"
+
+echo "Unity Launcher configured with native KDE panels"
+
 # Configure KDE panels for Unity-style layout
 echo "Configuring Unity-style panel layout..."
 
@@ -74,6 +86,24 @@ for i in 1 2 3 4 5 6 7 8 9 10 242 258; do
     $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "floating" "0"
     $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "panelVisibility" "0"
 done
+
+# Configure Unity Indicators system
+echo "Setting up Unity Indicators..."
+
+# Configure system tray to show Unity-style indicators
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "3" --group "Configuration" --group "General" --key "shownItems" "org.kde.plasma.networkmanagement,org.kde.plasma.audio,org.kde.plasma.battery,org.kde.plasma.notifications,org.kde.plasma.devicenotifier"
+
+# Enable Unity-style indicators
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "3" --group "Configuration" --group "General" --key "extraItems" "org.kde.plasma.printmanager,org.kde.plasma.clipboard,org.kde.plasma.mediacontroller"
+
+# Configure sound indicator
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "17" --group "Configuration" --group "General" --key "showVirtualDevices" "true"
+
+# Configure network indicator  
+$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "18" --group "Configuration" --group "General" --key "showConnectionState" "true"
+
+# Configure Unity-style session indicator (user menu)
+$KWRITECONFIG --file kdeglobals --group "General" --key "showUserSwitcher" "true"
 
 # Configure specific properties for the top panel (assuming it's Panel 1)
 $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "thickness" "24"
@@ -102,11 +132,47 @@ sleep 1
 plasmashell &>/dev/null &
 sleep 2
 
-# Configure KRunner for Unity-style HUD behavior
+# Configure Unity Dash system using KRunner
+echo "Setting up Unity Dash with lenses/scopes..."
+
+# Configure KRunner for Unity Dash-like behavior
 $KWRITECONFIG --file krunnerrc --group "General" --key "ActivateWhenTypingOnDesktop" "true"
 $KWRITECONFIG --file krunnerrc --group "General" --key "FreeFloating" "false"
 $KWRITECONFIG --file krunnerrc --group "General" --key "RetainPriorSearch" "false"
 $KWRITECONFIG --file krunnerrc --group "General" --key "ShowHistory" "false"
+
+# Enable Unity Dash-style plugins (lenses/scopes equivalent)
+echo "Enabling Unity Dash plugins..."
+
+# Applications lens equivalent
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "servicesEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "appstreamEnabled" "true"
+
+# Files & Folders lens equivalent  
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "placesEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "recentdocumentsEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "locationsEnabled" "true"
+
+# Music/Media lens equivalent
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "audioplayercontrolEnabled" "true"
+
+# System lens equivalent
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "systemsettingsEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "sessionsEnabled" "true"
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "powerdevilEnabled" "true"
+
+# Calculator lens equivalent
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "calculatorEnabled" "true"
+
+# Web search lens equivalent (like Unity's online scopes)
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "webshortcutsEnabled" "true"
+
+# Activities lens equivalent
+$KWRITECONFIG --file krunnerrc --group "Plugins" --key "activitiesEnabled" "true"
+
+# Configure search results display for Unity-style experience
+$KWRITECONFIG --file krunnerrc --group "General" --key "textMode" "false"
+$KWRITECONFIG --file krunnerrc --group "General" --key "historySize" "5"
 
 # Set up Rofi as Unity HUD (Alt+Space like original Unity)
 if command -v rofi >/dev/null 2>&1; then
@@ -168,6 +234,68 @@ echo 'export GTK_MODULES=appmenu-gtk-module' >> ~/.profile
 
 # Configure appmenu widget in the panel
 $KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "1" --group "Applets" --group "2" --group "Configuration" --group "General" --key "showApplicationMenu" "true"
+
+# Configure Unity Hot Corners
+echo "Setting up Unity Hot Corners..."
+
+# Top-left corner: Open Activities/Dash (like Unity's top-left reveal)
+$KWRITECONFIG --file kwinrc --group "Effect-PresentWindows" --key "BorderActivateAll" "9"
+
+# Top-right corner: Show desktop
+$KWRITECONFIG --file kwinrc --group "Effect-ShowDesktop" --key "BorderActivate" "3"
+
+# Bottom-left corner: Application launcher
+$KWRITECONFIG --file kwinrc --group "Script-desktopchangeosd" --key "BorderActivate" "1"
+
+# Bottom-right corner: Window spread
+$KWRITECONFIG --file kwinrc --group "Effect-PresentWindows" --key "BorderActivate" "7"
+
+# Enable hot corner effects
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "presentwindowsEnabled" "true"
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "showdesktopEnabled" "true"
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "desktopchangeosdEnabled" "true"
+
+# Configure Unity Window Management
+echo "Setting up Unity Window Management..."
+
+# Configure edge barriers (Unity-style)
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ElectricBorderDelay" "150"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ElectricBorderCooldown" "350"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ElectricBorderPushbackPixels" "1"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ElectricBorderMaximize" "true"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ElectricBorderTiling" "true"
+
+# Enable Unity-style window snapping
+$KWRITECONFIG --file kwinrc --group "Windows" --key "WindowSnapZone" "10"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "CenterSnapZone" "0"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "SnapOnlyWhenOverlapping" "false"
+
+# Configure workspace behavior like Unity
+$KWRITECONFIG --file kwinrc --group "Desktops" --key "Number" "4"
+$KWRITECONFIG --file kwinrc --group "Desktops" --key "Rows" "2"
+
+# Enable Expo effect (Unity's workspace spread)
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "overviewEnabled" "true"
+$KWRITECONFIG --file kwinrc --group "Effect-Overview" --key "BorderActivate" "9"
+
+# Configure window switching (Alt+Tab) Unity-style
+$KWRITECONFIG --file kwinrc --group "TabBox" --key "LayoutName" "big_icons"
+$KWRITECONFIG --file kwinrc --group "TabBox" --key "HighlightWindows" "true"
+$KWRITECONFIG --file kwinrc --group "TabBox" --key "ShowDesktop" "false"
+
+# Configure window grouping behavior
+$KWRITECONFIG --file kwinrc --group "Windows" --key "AutoRaise" "false"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "AutoRaiseInterval" "750"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "ClickRaise" "true"
+
+# Configure Unity-style focus behavior
+$KWRITECONFIG --file kwinrc --group "Windows" --key "FocusPolicy" "ClickToFocus"
+$KWRITECONFIG --file kwinrc --group "Windows" --key "NextFocusPrefersMouse" "false"
+
+# Enable Unity-style window effects
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "slideEnabled" "true"
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "fadeEnabled" "true"
+$KWRITECONFIG --file kwinrc --group "Plugins" --key "minimizeanimationEnabled" "true"
 
 # Configure KRunner for HUD-like functionality
 $KWRITECONFIG --file krunnerrc --group "Plugins" --key "appstreamEnabled" "true"

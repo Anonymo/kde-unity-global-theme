@@ -1,1 +1,8 @@
-.claude/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+package-lock.json
+node_modules/
