@@ -34,14 +34,14 @@ $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnRight
 # Enable borderless maximized windows (Unity style)
 $KWRITECONFIG --file kwinrc --group "Windows" --key "BorderlessMaximizedWindows" "true"
 
-# Configure icon theme with comprehensive fallbacks
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Yaru-dark"
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "FallbackTheme" "Papirus-Dark,breeze-dark,Adwaita,breeze,hicolor"
+# Configure icon theme - USE WORKING PAPIRUS ONLY
+$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Papirus-Light"
+$KWRITECONFIG --file kdeglobals --group "Icons" --key "FallbackTheme" "breeze,Adwaita,hicolor" 
 
-# Force refresh icon cache for all themes
-gtk-update-icon-cache -f -t /usr/share/icons/Yaru-dark/ 2>/dev/null || true
-gtk-update-icon-cache -f -t /usr/share/icons/Papirus-Dark/ 2>/dev/null || true
-gtk-update-icon-cache -f -t /usr/share/icons/breeze-dark/ 2>/dev/null || true
+# Force refresh icon cache for working themes only
+gtk-update-icon-cache -f -t /usr/share/icons/Papirus/ 2>/dev/null || true
+gtk-update-icon-cache -f -t /usr/share/icons/Papirus-Light/ 2>/dev/null || true
+gtk-update-icon-cache -f -t /usr/share/icons/breeze/ 2>/dev/null || true
 gtk-update-icon-cache -f -t /usr/share/icons/Adwaita/ 2>/dev/null || true
 
 # Configure cursor theme
@@ -53,12 +53,10 @@ $KWRITECONFIG --file plasmarc --group "Theme" --key "name" "Unity"
 # Configure system tray to use proper icons with fallbacks
 $KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "2" --group "Applets" --group "3" --group "Configuration" --group "General" --key "iconSpacing" "1"
 
-# Configure additional icon fallbacks for missing system icons
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "Theme" "Yaru-dark"
-$KWRITECONFIG --file kdeglobals --group "Icons" --key "FallbackTheme" "Papirus-Dark,breeze-dark,Adwaita,breeze,hicolor"
+# Icon configuration already done above - using Papirus only
 
-# Fix missing application icons by ensuring proper icon cache refresh
-for icon_theme in /usr/share/icons/Yaru-dark /usr/share/icons/Papirus-Dark /usr/share/icons/breeze-dark /usr/share/icons/Adwaita; do
+# Fix missing application icons by ensuring proper icon cache refresh  
+for icon_theme in /usr/share/icons/Papirus /usr/share/icons/Papirus-Light /usr/share/icons/breeze /usr/share/icons/Adwaita; do
     if [ -d "$icon_theme" ]; then
         gtk-update-icon-cache -f -t "$icon_theme" 2>/dev/null || true
     fi
@@ -67,12 +65,18 @@ done
 # Configure KDE panels for Unity-style layout
 echo "Configuring Unity-style panel layout..."
 
-# Set top panel height to 24px (Unity standard)
-$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "thickness" "24"
+# LOCK panels to screen edges like Ubuntu Unity - NEVER floating
+# Iterate over all known panel IDs to ensure all panels are locked.
+for i in 1 2 3 4 5 6 7 8 9 10 242 258; do
+    $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "floating" "0"
+    $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "panelVisibility" "0"
+done
 
-# Configure panel to show global menu, clock, and system tray (Unity style)
+# Configure specific properties for the top panel (assuming it's Panel 1)
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "thickness" "24"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "lengthMode" "1"
+$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "maxLength" "100"
 $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "alignment" "132"
-$KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel 1" --key "panelVisibility" "0"
 
 # Panel will use Unity-style layout defined in the theme
 

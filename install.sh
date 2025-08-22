@@ -75,16 +75,8 @@ if [ -d "plasma/plasmoids/org.kde.unity.dash" ]; then
     cp -r plasma/plasmoids/org.kde.unity.dash "$PLASMOID_DIR/"
 fi
 
-# Install fixed Yaru icons for system tray
-if [ -d "icons/Yaru-fixed" ]; then
-    echo "Installing Yaru-fixed icon theme..."
-    if [ "$SYSTEM_INSTALL" = true ]; then
-        cp -r icons/Yaru-fixed /usr/share/icons/
-    else
-        mkdir -p "$HOME/.local/share/icons"
-        cp -r icons/Yaru-fixed "$HOME/.local/share/icons/"
-    fi
-fi
+# Icon theme configuration is handled by the setup script
+# Uses system Papirus icons instead of bundled themes
 
 # Unity layout will be configured using KDE's native panels
 
