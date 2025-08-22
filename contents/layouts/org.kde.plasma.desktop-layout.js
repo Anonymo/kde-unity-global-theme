@@ -20,6 +20,9 @@ leftPanel.hiding = "none"
 var applicationLauncher = leftPanel.addWidget("org.kde.plasma.kickoff")
 var taskManager = leftPanel.addWidget("org.kde.plasma.icontasks")
 
+// Add Unity workspace switcher (virtual desktop pager)
+var workspaceSwitcher = leftPanel.addWidget("org.kde.plasma.pager")
+
 // Add separator before system area (Unity style)
 var separator1 = leftPanel.addWidget("org.kde.plasma.panelspacer")
 
@@ -61,6 +64,12 @@ deviceNotifier.writeConfig("showText", false)
 // Configure trash widget
 trashWidget.currentConfigGroup = ["General"] 
 trashWidget.writeConfig("showText", false)
+
+// Configure workspace switcher (Unity style)
+workspaceSwitcher.currentConfigGroup = ["General"]
+workspaceSwitcher.writeConfig("displayedText", "Number")
+workspaceSwitcher.writeConfig("showWindowIcons", true)
+workspaceSwitcher.writeConfig("wrapPage", false)
 
 // Configure global shortcuts
 // Super key for application launcher
