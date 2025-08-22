@@ -24,7 +24,7 @@
   <g id="decoration-top-inactive">
     <rect x="0" y="25" width="200" height="24" fill="url(#inactiveTitle)"/>
     <!-- Bottom border -->
-    <rect x="0" y="48" width="200" height="1" fill="#1a1a1a" opacity="0.8"/>
+    <rect x="0" y="48" width="200" height="1" fill="#1a1a1a"/>
   </g>
   
   <!-- Side borders (minimal for Unity style) -->

@@ -219,8 +219,7 @@ $KWRITECONFIG --file kdeglobals --group "General" --key "DBusMenu" "true"
 echo 'export QT_QPA_PLATFORMTHEME=kde' >> ~/.profile
 echo 'export GTK_MODULES=appmenu-gtk-module' >> ~/.profile
 
-# Configure appmenu widget in the panel
-$KWRITECONFIG --file plasma-org.kde.plasma.desktop-appletsrc --group "Containments" --group "1" --group "Applets" --group "2" --group "Configuration" --group "General" --key "showApplicationMenu" "true"
+
 
 # Configure Unity Hot Corners
 echo "Setting up Unity Hot Corners..."
