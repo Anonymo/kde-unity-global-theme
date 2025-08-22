@@ -112,6 +112,12 @@ fi
 cp scripts/setup-ubuntu-unity-theme.sh "$BIN_DIR/"
 chmod +x "$BIN_DIR/setup-ubuntu-unity-theme.sh"
 
+# Check for xdotool
+if ! command -v xdotool &> /dev/null; then
+    echo "Warning: xdotool is not installed. The HUD will not be able to send shortcuts."
+    echo "Please install xdotool for full functionality (e.g., sudo apt install xdotool or sudo pacman -S xdotool)."
+fi
+
 # Create autostart entry
 cat > "$AUTOSTART_DIR/ubuntu-unity-theme.desktop" <<EOF
 [Desktop Entry]

@@ -187,36 +187,8 @@ $KWRITECONFIG --file krunnerrc --group "Plugins" --key "activitiesEnabled" "true
 $KWRITECONFIG --file krunnerrc --group "General" --key "textMode" "false"
 $KWRITECONFIG --file krunnerrc --group "General" --key "historySize" "5"
 
-# Set up Rofi as Unity HUD (Alt+Space like original Unity)
-if command -v rofi >/dev/null 2>&1; then
-    echo "Configuring Rofi as Unity HUD (Alt+Space)..."
-    # Create HUD script
-    mkdir -p ~/.local/bin
-    cat > ~/.local/bin/unity-hud <<'EOF'
-#!/bin/bash
-# Unity 7 style HUD - integrated into launcher area like original
-rofi -show drun -theme-str 'window {width: 400px; height: 600px; location: west; anchor: west; x-offset: 72px; y-offset: 0;}' -theme-str 'listview {lines: 12; columns: 1;}' -theme-str 'inputbar {children: [prompt, textbox-prompt-colon, entry]; margin: 10px;}' -theme-str 'prompt {str: "Search...";}' -theme-str 'element {padding: 8px;}' -no-lazy-grab -matching fuzzy -theme Arc-Dark
-EOF
-    chmod +x ~/.local/bin/unity-hud
-    
-    # Set global shortcut for Unity HUD
-    $KWRITECONFIG --file kglobalshortcutsrc --group "services" --key "unity-hud.desktop" "Alt+Space,none,Unity HUD"
-    
-    # Create desktop file for the shortcut
-    mkdir -p ~/.local/share/applications
-    cat > ~/.local/share/applications/unity-hud.desktop <<EOF
-[Desktop Entry]
-Type=Application
-Name=Unity HUD
-Exec=$HOME/.local/bin/unity-hud
-NoDisplay=true
-StartupNotify=false
-EOF
-    
-    echo "Unity HUD configured: Press Alt+Space to access"
-else
-    echo "Using KRunner as Unity HUD (Alt+Space)"
-fi
+# KRunner is the Unity HUD - no external dependencies needed
+echo "KRunner configured as Unity HUD: Press Alt+Space to access"
 
 # GTK theme configuration
 mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"

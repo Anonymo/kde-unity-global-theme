@@ -16,7 +16,6 @@ depends=(
     'papirus-icon-theme'
     'plasma-browser-integration'
     'plasma-integration'
-    'rofi'
 )
 optdepends=(
     'material-kwin-decoration-git: Enhanced Material Design window decorations for better Unity look'

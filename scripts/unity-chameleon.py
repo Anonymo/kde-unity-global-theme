@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Unity Chameleon Panel Colors
 Extracts dominant colors from wallpaper and applies them to KDE panels
@@ -10,6 +11,8 @@ import subprocess
 import colorsys
 from PIL import Image
 import json
+from sklearn.cluster import KMeans
+import numpy as np
 
 def get_current_wallpaper():
     """Get the current wallpaper path from KDE"""
@@ -17,68 +20,41 @@ def get_current_wallpaper():
         result = subprocess.run([
             'kreadconfig6', '--file', 'plasma-org.kde.plasma.desktop-appletsrc',
             '--group', 'Wallpaper', '--key', 'Image'
-        ], capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            return result.stdout.strip()
-        
-        # Fallback: check plasmashell config
-        result = subprocess.run([
-            'kreadconfig6', '--file', 'plasmarc',
-            '--group', 'Wallpapers', '--key', 'usersWallpapers'
-        ], capture_output=True, text=True)
-        
-        if result.returncode == 0:
+        ], capture_output=True, text=True, check=True)
+        return result.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        try:
+            result = subprocess.run([
+                'kreadconfig6', '--file', 'plasmarc',
+                '--group', 'Wallpapers', '--key', 'usersWallpapers'
+            ], capture_output=True, text=True, check=True)
             wallpapers = result.stdout.strip().split(',')
             if wallpapers:
                 return wallpapers[0]
-                
-    except Exception as e:
-        print(f"Error getting wallpaper: {e}")
-    
-    # Default wallpaper location
-    return os.path.expanduser("~/.local/share/wallpapers/default.jpg")
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            print(f"Error getting wallpaper: {e}")
+    return None
 
 def extract_dominant_color(image_path, num_colors=5):
-    """Extract dominant colors from an image"""
+    """Extract dominant color from an image using k-means clustering."""
     try:
-        if not os.path.exists(image_path):
+        if not image_path or not os.path.exists(image_path):
             print(f"Wallpaper not found: {image_path}")
             return "#E95420"  # Ubuntu orange fallback
-            
-        # Open and resize image for performance
+
         with Image.open(image_path) as img:
             img = img.convert('RGB')
-            img = img.resize((150, 150))  # Reduce size for speed
-            
-            # Get all pixels
-            pixels = list(img.getdata())
-            
-            # Create color frequency map
-            color_freq = {}
-            for pixel in pixels:
-                # Skip very dark or very light pixels
-                brightness = sum(pixel) / 3
-                if brightness < 30 or brightness > 225:
-                    continue
-                    
-                # Group similar colors (reduce precision)
-                color = tuple(c // 8 * 8 for c in pixel)
-                color_freq[color] = color_freq.get(color, 0) + 1
-            
-            if not color_freq:
-                return "#E95420"
-            
-            # Sort by frequency and get most common
-            sorted_colors = sorted(color_freq.items(), key=lambda x: x[1], reverse=True)
-            dominant_color = sorted_colors[0][0]
-            
-            # Convert to hex
-            hex_color = '#%02x%02x%02x' % dominant_color
-            
-            # Adjust for better panel visibility
+            img = img.resize((100, 100))  # Resize for performance
+            pixels = np.array(img.getdata())
+
+            # Use k-means to find the dominant color
+            kmeans = KMeans(n_clusters=num_colors, random_state=42)
+            kmeans.fit(pixels)
+            dominant_color = kmeans.cluster_centers_[np.argmax(np.bincount(kmeans.labels_))]
+
+            hex_color = '#%02x%02x%02x' % tuple(int(c) for c in dominant_color)
             return adjust_color_for_panel(hex_color)
-            
+
     except Exception as e:
         print(f"Error extracting color from {image_path}: {e}")
         return "#E95420"
@@ -148,9 +124,19 @@ X-KDE-PluginInfo-Category=Plasma Theme
 
 def setup_wallpaper_monitor():
     """Set up monitoring for wallpaper changes"""
+    # Check if systemd is running
+    if not os.path.isdir("/run/systemd/system"):
+        print("Systemd not detected. Skipping service setup.")
+        return
+
     monitor_script = f"""#!/bin/bash
 # Unity Chameleon Wallpaper Monitor
-while inotifywait -e modify ~/.config/plasma-org.kde.plasma.desktop-appletsrc 2>/dev/null; do
+while true; do
+    if ! pgrep -x "plasmashell" > /dev/null; then
+        sleep 10
+        continue
+    fi
+    inotifywait -e modify ~/.config/plasma-org.kde.plasma.desktop-appletsrc 2>/dev/null
     sleep 2
     python3 {__file__}
 done
@@ -184,6 +170,10 @@ WantedBy=default.target
     
     with open(os.path.join(service_dir, "unity-chameleon.service"), 'w') as f:
         f.write(service_content)
+
+    # Enable and start the service
+    subprocess.run(["systemctl", "--user", "daemon-reload"])
+    subprocess.run(["systemctl", "--user", "enable", "--now", "unity-chameleon.service"])
 
 def main():
     """Main function"""

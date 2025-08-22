@@ -35,8 +35,51 @@ class UnityHUD:
             {"text": "Zoom In", "shortcut": "ctrl+plus", "category": "View"},
             {"text": "Zoom Out", "shortcut": "ctrl+minus", "category": "View"},
             {"text": "Full Screen", "shortcut": "F11", "category": "View"},
+            class UnityHUD:
+    def __init__(self):
+        self.visible = False
+        self.root = None
+        self.menu_items = self.load_menu_items()
+
+    def load_menu_items(self):
+        """Dynamically load menu items from the active application.
+
+        This is a placeholder for a more advanced implementation.
+        A real implementation would use the AT-SPI D-Bus interface to get the
+        menu structure of the currently focused application.
+
+        For example, you could use the `atspi-codegen` tool to generate
+        Python bindings for the AT-SPI interfaces, and then use those bindings
+        to query the menu items.
+        """
+        # Placeholder menu items
+        return [
+            {"text": "New File", "shortcut": "ctrl+n", "category": "File"},
+            {"text": "Open File", "shortcut": "ctrl+o", "category": "File"}, 
+            {"text": "Save", "shortcut": "ctrl+s", "category": "File"},
+            {"text": "Save As", "shortcut": "ctrl+shift+s", "category": "File"},
+            {"text": "Print", "shortcut": "ctrl+p", "category": "File"},
+            {"text": "Quit", "shortcut": "ctrl+q", "category": "File"},
+            {"text": "Undo", "shortcut": "ctrl+z", "category": "Edit"},
+            {"text": "Redo", "shortcut": "ctrl+y", "category": "Edit"},
+            {"text": "Cut", "shortcut": "ctrl+x", "category": "Edit"},
+            {"text": "Copy", "shortcut": "ctrl+c", "category": "Edit"},
+            {"text": "Paste", "shortcut": "ctrl+v", "category": "Edit"},
+            {"text": "Select All", "shortcut": "ctrl+a", "category": "Edit"},
+            {"text": "Find", "shortcut": "ctrl+f", "category": "Edit"},
+            {"text": "Replace", "shortcut": "ctrl+h", "category": "Edit"},
+            {"text": "Preferences", "shortcut": "", "category": "Edit"},
+            {"text": "Zoom In", "shortcut": "ctrl+plus", "category": "View"},
+            {"text": "Zoom Out", "shortcut": "ctrl+minus", "category": "View"},
+            {"text": "Full Screen", "shortcut": "F11", "category": "View"},
             {"text": "Help Contents", "shortcut": "F1", "category": "Help"},
-            {"text": "About", "shortcut": "", "category": "Help"}
+            {"text": "About", "shortcut": "", "category": "Help"},
+            {"text": "Quit HUD", "shortcut": "", "category": "Application"}
+        ]
+        
+    def create_hud_window(self):,
+            {"text": "About", "shortcut": "", "category": "Help"},
+            {"text": "Quit HUD", "shortcut": "", "category": "Application"}
         ]
         
     def create_hud_window(self):
@@ -152,6 +195,10 @@ class UnityHUD:
         if index < len(items):
             item = items[index]
             print(f"Executing: {item['text']} ({item['shortcut']})")
+
+            if item['text'] == 'Quit HUD':
+                self.root.quit()
+                return
             
             if item['shortcut']:
                 # Convert shortcut format and send
