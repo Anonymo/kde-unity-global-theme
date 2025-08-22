@@ -219,8 +219,6 @@ $KWRITECONFIG --file kdeglobals --group "General" --key "DBusMenu" "true"
 echo 'export QT_QPA_PLATFORMTHEME=kde' >> ~/.profile
 echo 'export GTK_MODULES=appmenu-gtk-module' >> ~/.profile
 
-
-
 # Configure Unity Hot Corners
 echo "Setting up Unity Hot Corners..."
 
