@@ -1,6 +1,6 @@
 # Unity-style GTK2 configuration
 gtk-theme-name="Adwaita-dark"
-gtk-icon-theme-name="Papirus" 
+gtk-icon-theme-name="Papirus-Light" 
 gtk-font-name="Ubuntu 11"
 gtk-cursor-theme-name="Yaru"
 gtk-cursor-theme-size=24
