@@ -27,10 +27,10 @@ $KWRITECONFIG --file kdeglobals --group "General" --key "ColorScheme" "UnityDark
 
 # Configure window decorations for Unity style (close, minimize, maximize grouped on left)
 # Check if Material decoration is available, otherwise use Breeze
-if [ -d "/usr/share/kwin/decorations/Material-Kwin-Decoration" ] || [ -d "$HOME/.local/share/kwin/decorations/Material-Kwin-Decoration" ]; then
+if [ -f "/usr/lib/qt6/plugins/org.kde.kdecoration3/materialdecoration.so" ]; then
     echo "Using Material window decorations for enhanced Unity look..."
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.kwin.aurorae"
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "__aurorae__svg__Material-Kwin-Decoration"
+    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.materialdecoration"
+    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Material"
 else
     echo "Material decorations not found, using Breeze fallback..."
     $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze"
