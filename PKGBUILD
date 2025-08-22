@@ -18,6 +18,9 @@ depends=(
     'plasma-integration'
     'rofi'
 )
+optdepends=(
+    'material-kwin-decoration-git: Enhanced Material Design window decorations for better Unity look'
+)
 makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
