@@ -93,8 +93,14 @@ $KWRITECONFIG --file kglobalshortcutsrc --group "org.kde.plasma.emojier.desktop"
 # Configure Unity-style HUD using KRunner and Rofi
 echo "Setting up Unity-style HUD..."
 
-# Set KRunner shortcut to Alt+Space (Unity HUD style)
+# Set KRunner shortcut to Alt+Space (Unity HUD style) - force reload shortcuts
 $KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+Space,Alt+Space,KRunner"
+
+# Force reload of global shortcuts by restarting plasma shell
+kquitapp6 plasmashell 2>/dev/null || true
+sleep 1
+plasmashell &>/dev/null &
+sleep 2
 
 # Configure KRunner for Unity-style HUD behavior
 $KWRITECONFIG --file krunnerrc --group "General" --key "ActivateWhenTypingOnDesktop" "true"
