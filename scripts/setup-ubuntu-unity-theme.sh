@@ -93,13 +93,14 @@ $KWRITECONFIG --file kglobalshortcutsrc --group "org.kde.plasma.emojier.desktop"
 # Configure Unity-style HUD using KRunner and Rofi
 echo "Setting up Unity-style HUD..."
 
-# Set KRunner shortcut to Alt+F2 (traditional launcher)
-$KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+F2,Alt+F2,KRunner"
+# Set KRunner shortcut to Alt+Space (Unity HUD style)
+$KWRITECONFIG --file kglobalshortcutsrc --group "krunner" --key "_launch" "Alt+Space,Alt+Space,KRunner"
 
-# Configure KRunner for better HUD-like behavior
+# Configure KRunner for Unity-style HUD behavior
 $KWRITECONFIG --file krunnerrc --group "General" --key "ActivateWhenTypingOnDesktop" "true"
-$KWRITECONFIG --file krunnerrc --group "General" --key "FreeFloating" "true"
+$KWRITECONFIG --file krunnerrc --group "General" --key "FreeFloating" "false"
 $KWRITECONFIG --file krunnerrc --group "General" --key "RetainPriorSearch" "false"
+$KWRITECONFIG --file krunnerrc --group "General" --key "ShowHistory" "false"
 
 # Set up Rofi as Unity HUD (Alt+Space like original Unity)
 if command -v rofi >/dev/null 2>&1; then
@@ -108,7 +109,8 @@ if command -v rofi >/dev/null 2>&1; then
     mkdir -p ~/.local/bin
     cat > ~/.local/bin/unity-hud <<'EOF'
 #!/bin/bash
-rofi -show drun -theme-str 'window {width: 50%; location: center; anchor: center;}' -theme-str 'listview {lines: 8;}' -theme-str 'inputbar {children: [prompt, textbox-prompt-colon, entry];}' -theme-str 'prompt {str: "HUD:";}' -no-lazy-grab -matching fuzzy
+# Unity 7 style HUD - integrated into launcher area like original
+rofi -show drun -theme-str 'window {width: 400px; height: 600px; location: west; anchor: west; x-offset: 72px; y-offset: 0;}' -theme-str 'listview {lines: 12; columns: 1;}' -theme-str 'inputbar {children: [prompt, textbox-prompt-colon, entry]; margin: 10px;}' -theme-str 'prompt {str: "Search...";}' -theme-str 'element {padding: 8px;}' -no-lazy-grab -matching fuzzy -theme Arc-Dark
 EOF
     chmod +x ~/.local/bin/unity-hud
     
@@ -128,8 +130,7 @@ EOF
     
     echo "Unity HUD configured: Press Alt+Space to access"
 else
-    echo "Rofi not found. Install with: pacman -S rofi"
-    echo "Using KRunner as fallback HUD (Alt+F2)"
+    echo "Using KRunner as Unity HUD (Alt+Space)"
 fi
 
 # GTK theme configuration
