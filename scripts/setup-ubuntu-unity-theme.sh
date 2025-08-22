@@ -26,16 +26,10 @@ $KWRITECONFIG --file kdeglobals --group "WM" --key "activeFont" "Ubuntu,11,-1,5,
 $KWRITECONFIG --file kdeglobals --group "General" --key "ColorScheme" "UnityDark"
 
 # Configure window decorations for Unity style (close, minimize, maximize grouped on left)
-# Check if Material decoration is available, otherwise use Breeze
-if [ -f "/usr/lib/qt6/plugins/org.kde.kdecoration3/materialdecoration.so" ]; then
-    echo "Using Material window decorations for enhanced Unity look..."
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.materialdecoration"
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Material"
-else
-    echo "Material decorations not found, using Breeze fallback..."
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze"
-    $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Breeze"
-fi
+# Use Breeze decorations to avoid transparency issues
+echo "Using Breeze window decorations for solid title bars..."
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "library" "org.kde.breeze"
+$KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "theme" "Breeze"
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnLeft" "XIA"
 $KWRITECONFIG --file kwinrc --group "org.kde.kdecoration2" --key "ButtonsOnRight" ""
 
@@ -95,10 +89,18 @@ echo "Configuring Unity-style panel layout..."
 
 # LOCK panels to screen edges like Ubuntu Unity - NEVER floating
 # Iterate over all known panel IDs to ensure all panels are locked.
-for i in 1 2 3 4 5 6 7 8 9 10 242 258; do
+for i in 1 2 3 4 5 6 7 8 9 10 242 258 270 289 302 319; do
     $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "floating" "0"
     $KWRITECONFIG --file plasmashellrc --group "PlasmaViews" --group "Panel $i" --key "panelVisibility" "0"
 done
+
+# Force fix any floating=1 entries that might exist
+sed -i 's/floating=1/floating=0/g' ~/.config/plasmashellrc
+
+# Force restart plasmashell to apply panel locking
+killall plasmashell 2>/dev/null || true
+sleep 2
+plasmashell &>/dev/null &
 
 # Configure Unity Indicators system
 echo "Setting up Unity Indicators..."

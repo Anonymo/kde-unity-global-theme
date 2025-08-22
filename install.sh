@@ -54,9 +54,7 @@ cp metadata.json "$THEME_DIR/"
 echo "Installing Unity Plasma theme..."
 cp -r plasma/desktoptheme/Unity/* "$PLASMA_THEME_DIR/"
 
-# Copy window decoration theme
-echo "Installing Unity window decorations..."
-cp -r aurorae/Unity/* "$AURORAE_DIR/"
+# Window decorations use Breeze - Unity aurorae removed due to transparency issues
 
 # Copy color scheme
 echo "Installing Unity Dark color scheme..."
